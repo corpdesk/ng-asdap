@@ -1,0 +1,18 @@
+const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
+
+module.exports = withModuleFederationPlugin({
+
+  name: 'ng-asdap',
+
+  exposes: {
+    './Component': './projects/ng-asdap/src/app/app.component.ts',
+    './PagesModule': './projects/ng-asdap/src/app/pages/pages.module.ts',
+    './LoginComponent': './projects/ng-asdap/src/app/account/auth/login/login.component.ts',
+    './UserFrontModule': './projects/ng-asdap/src/app/modules/user/user-front.module.ts',
+  },
+
+  shared: {
+    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+  },
+
+});
